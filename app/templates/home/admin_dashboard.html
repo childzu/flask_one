@@ -1,20 +1,20 @@
 <!-- app/templates/home/admin_dashboard.html -->
-
-{% extends "base_foundation.html" %}
-{% block title %}Admin Dashboard{% endblock %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base_app.html" %}
+{% block title %}Departments{% endblock %}
 {% block body %}
-<div class="intro-header-dashboard-admin">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="intro-message">
-                    <h1>Admin Dashboard</h1>
-                    <h3>For administrators only!</h3>
-                    <hr class="intro-divider">
-                    </ul>
-                </div>
-            </div>
-        </div>
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Admin Dashboard</h1>
+        <h3 style="text-align:center;">For administrators only!</h3>
+        <hr class="intro-divider">
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

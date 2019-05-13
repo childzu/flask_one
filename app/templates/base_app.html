@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Foundation for Sites</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='foundation/css/foundation.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='foundation/css/app.css') }}">
+  </head>
+  <body>
+    <div class="top-bar-container" data-sticky-container>
+      <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
+          <div class="top-bar">
+              <div class="top-bar-left">
+                  <ul class="menu">
+                      <li class="menu"><a href="{{ url_for('home.homepage') }}">PM25</a></li>
+                  </ul>
+              </div>
+              <div class="top-bar-right">
+                  <ul class="menu">
+                      {% if current_user.is_authenticated %}
+                          <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                          <li><a ><i class="fa fa-user"></i>  Hi, {{ current_user.first_name }} {{ current_user.last_name }}!</a></li>
+                      {% else %}
+                          <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                          <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                      {% endif %}
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+
+<!--    <div class="grid-container">-->
+
+<!--    </div>-->
+
+    <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
+                <div class="row column">
+                    <ul class="accordion" data-accordion data-multi-expand="false">
+                        {% if current_user.is_authenticated %}
+                          {% if current_user.is_admin %}
+                              <li class="accordion-item is-active"><a class="accordion-title" data-accordion-item href="{{ url_for('home.admin_dashboard') }}">Dashboard</a></li>
+                              <li class="accordion-item is-active"><a class="accordion-title" data-accordion-item href="{{ url_for('admin.list_departments') }}">Departments</a></li>
+                              <li class="accordion-item is-active"><a class="accordion-title" data-accordion-item href="{{ url_for('admin.list_roles') }}">Roles</a></li>
+                              <li class="accordion-item is-active"><a class="accordion-title" data-accordion-item href="{{ url_for('admin.list_employees') }}">Employees</a></li>
+                          {% else %}
+                              <li class="accordion-item is-active"><a class="accordion-title" data-accordion-item href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
+                          {% endif %}
+                      {% endif %}
+                    </ul>
+<!--                    <div class="row">-->
+<!--                      <div class="columns">-->
+<!--                        <ul class="accordion" data-accordion>-->
+<!--                          <li class="accordion-item is-active" data-accordion-item>-->
+<!--                            <a href="#" class="accordion-title">Accordion 1</a>-->
+<!--                          </li>-->
+<!--                          <li class="accordion-item" data-accordion-item>-->
+<!--                            <a href="#" class="accordion-title">Accordion 2</a>-->
+<!--                          </li>-->
+<!--                          <li class="accordion-item" data-accordion-item>-->
+<!--                            <a href="#" class="accordion-title">Accordion 3</a>-->
+<!--                          </li>-->
+<!--                        </ul>-->
+<!--                      </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="off-canvas-content" data-off-canvas-content>
+                <div class="primary">
+                    <div class="row column">
+                        <nav aria-label="You are here:" role="navigation" style="margin: 5px;">
+                          <ul class="breadcrumbs">
+                              {% if current_user.is_admin %}
+                                  <li class="disabled">Administrator</li>
+                              {% else %}
+                                  <li class="disabled">User</li>
+                              {% endif %}
+                              <li><a href="#">Features</a></li>
+<!--                            <li class="disabled">Gene Splicing</li>-->
+<!--                            <li>-->
+<!--                              <span class="show-for-sr">Current: </span> Cloning-->
+<!--                            </li>-->
+                          </ul>
+                        </nav>
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='foundation/js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='foundation/js/vendor/what-input.js') }}"></script>
+    <script src="{{ url_for('static', filename='foundation/js/vendor/foundation.js') }}"></script>
+    <script src="{{ url_for('static', filename='foundation/js/app.js') }}"></script>
+  </body>
+</html>

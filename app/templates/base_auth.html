@@ -7,7 +7,6 @@
         <title>Foundation for Sites</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='foundation/css/foundation.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='foundation/css/app.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='foundation/css/top-bar.css') }}">
   </head>
   <body>
     <div class="top-bar-container" data-sticky-container>
@@ -42,10 +41,8 @@
     </div>
 
     <div class="grid-container">
-
         {% block body %}
         {% endblock %}
-
     </div>
 
 
