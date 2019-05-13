@@ -15,8 +15,6 @@ class DevelopmentConfig(Config):
     print('System running in mode : Development')
     DEBUG = True
     SQLALCHEMY_ECHO = True
-    TEMPLATES_AUTO_RELOAD = True
-
 
 class ProductionConfig(Config):
     """

@@ -46,7 +46,8 @@ def login():
 
         # check whether employee exists in the database and whether
         # the password entered matches the password in the database
-        employee = Employee.query.filter_by(email=form.email.data).first()
+        # employee = Employee.query.filter_by(email=form.email.data).first()
+        employee = Employee.query.filter_by(username=form.username.data).first()
         if employee is not None and employee.verify_password(
                 form.password.data):
             # log employee in

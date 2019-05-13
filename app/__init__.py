@@ -20,9 +20,10 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     # app.config['TEMPLATES_AUTO_RELOAD'] = True
     # app.run(debug=True, use_reloader=True)
-    # app.jinja_env.cache = {}
+    app.jinja_env.cache = {}
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.config['DEBUG'] = True
 
     Bootstrap(app)
     db.init_app(app)

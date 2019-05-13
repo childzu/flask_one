@@ -1,10 +1,12 @@
 <!-- app/templates/auth/register.html -->
-
+{% import "bootstrap/utils.html" as utils %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% extends "base.html" %}
+{% extends "base_foundation.html" %}
 {% block title %}Register{% endblock %}
 {% block body %}
 <div class="content-section">
+  {{ utils.flashed_messages() }}
+  <br/>
   <div class="center">
     <h1>Register for an account</h1>
     <br/>
